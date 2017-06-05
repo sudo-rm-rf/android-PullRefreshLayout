@@ -163,7 +163,9 @@ public class PullRefreshLayout extends ViewGroup {
             for (int i = 0; i < getChildCount(); i++) {
                 View child = getChildAt(i);
                 if (child != mRefreshView)
-                    mTarget = child;
+                    if(child instanceof AbsListView) {
+                        mTarget = child;
+                    }
             }
         }
     }
