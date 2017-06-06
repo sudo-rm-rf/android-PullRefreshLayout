@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -101,6 +102,11 @@ public class PullRefreshLayout extends ViewGroup {
         mRefreshDrawable.setColorSchemeColors(colorSchemeColors);
     }
 
+    public void setTargetView(View v){
+        if (v != mRefreshView)
+            this.mTarget = v;
+    }
+
     public void setColor(int color) {
         setColorSchemeColors(color);
     }
@@ -163,10 +169,8 @@ public class PullRefreshLayout extends ViewGroup {
             for (int i = 0; i < getChildCount(); i++) {
                 View child = getChildAt(i);
                 if (child != mRefreshView)
-                    if(child instanceof AbsListView) {
                         mTarget = child;
-                    }
-            }
+                }
         }
     }
 

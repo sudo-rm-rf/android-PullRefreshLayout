@@ -29,4 +29,8 @@ public class DemoActivity extends Activity {
         startActivity(new Intent(this, ScrollViewActivity.class));
     }
 
+     public void onNestedRecyclerViewClick(View view){
+         startActivity(new Intent(this, NestRecyclerViewActivity.class));
+     }
+
 }
