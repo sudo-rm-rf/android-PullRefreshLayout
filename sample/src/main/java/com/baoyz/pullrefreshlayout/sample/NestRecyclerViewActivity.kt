@@ -30,7 +30,6 @@ class NestRecyclerViewActivity : Activity() {
 
     layout = findViewById(R.id.swipeRefreshLayout) as PullRefreshLayout
 
-    layout.setTargetView(recyclerView)
     layout.setOnRefreshListener {
       layout.postDelayed(
           { layout.setRefreshing(false) }, 4000)

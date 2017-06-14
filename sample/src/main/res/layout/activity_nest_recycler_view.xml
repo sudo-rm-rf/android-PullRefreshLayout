@@ -1,5 +1,4 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,25 +10,31 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       >
-
-    <RelativeLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/blue"
         >
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/blue"
-        >
-      <android.support.v7.widget.RecyclerView
-          android:id="@+id/nestedrecyclerView"
+      <RelativeLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
-          android:background="#00ff00"
-          />
-    </RelativeLayout>
-    </RelativeLayout>
+          android:background="@color/blue"
+          android:clickable="true"
+          >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blue"
+            android:clickable="true"
+            >
+          <android.support.v7.widget.RecyclerView
+              android:id="@+id/nestedrecyclerView"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#00ff00"
+              android:nestedScrollingEnabled="false"
+              />
+        </RelativeLayout>
+      </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
   </com.baoyz.widget.PullRefreshLayout>
-
 </RelativeLayout>

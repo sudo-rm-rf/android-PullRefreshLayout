@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -102,11 +101,6 @@ public class PullRefreshLayout extends ViewGroup {
         mRefreshDrawable.setColorSchemeColors(colorSchemeColors);
     }
 
-    public void setTargetView(View v){
-        if (v != mRefreshView)
-            this.mTarget = v;
-    }
-
     public void setColor(int color) {
         setColorSchemeColors(color);
     }
@@ -159,7 +153,7 @@ public class PullRefreshLayout extends ViewGroup {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingBottom(), MeasureSpec.EXACTLY);
         mTarget.measure(widthMeasureSpec, heightMeasureSpec);
         mRefreshView.measure(widthMeasureSpec, heightMeasureSpec);
-//        mRefreshView.measure(MeasureSpec.makeMeasureSpec(mRefreshViewWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(mRefreshViewHeight, MeasureSpec.EXACTLY));
+        //        mRefreshView.measure(MeasureSpec.makeMeasureSpec(mRefreshViewWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(mRefreshViewHeight, MeasureSpec.EXACTLY));
     }
 
     private void ensureTarget() {
@@ -169,8 +163,8 @@ public class PullRefreshLayout extends ViewGroup {
             for (int i = 0; i < getChildCount(); i++) {
                 View child = getChildAt(i);
                 if (child != mRefreshView)
-                        mTarget = child;
-                }
+                    mTarget = child;
+            }
         }
     }
 
@@ -292,9 +286,9 @@ public class PullRefreshLayout extends ViewGroup {
                     float extraOS = Math.abs(scrollTop) - mTotalDragDistance;
                     float slingshotDist = mSpinnerFinalOffset;
                     float tensionSlingshotPercent = Math.max(0,
-                            Math.min(extraOS, slingshotDist * 2) / slingshotDist);
+                        Math.min(extraOS, slingshotDist * 2) / slingshotDist);
                     float tensionPercent = (float) ((tensionSlingshotPercent / 4) - Math.pow(
-                            (tensionSlingshotPercent / 4), 2)) * 2f;
+                        (tensionSlingshotPercent / 4), 2)) * 2f;
                     float extraMove = (slingshotDist) * tensionPercent * 2;
                     targetY = (int) ((slingshotDist * mDragPercent) + extraMove);
                     if (mRefreshView.getVisibility() != View.VISIBLE) {
@@ -453,7 +447,7 @@ public class PullRefreshLayout extends ViewGroup {
 
         @Override
         public void onAnimationEnd(Animation animation) {
-//            mRefreshDrawable.stop();
+            //            mRefreshDrawable.stop();
             mRefreshView.setVisibility(View.GONE);
             mCurrentOffsetTop = mTarget.getTop();
         }
@@ -477,7 +471,7 @@ public class PullRefreshLayout extends ViewGroup {
     }
 
     private void setTargetOffsetTop(int offset, boolean requiresUpdate) {
-//        mRefreshView.bringToFront();
+        //        mRefreshView.bringToFront();
         mTarget.offsetTopAndBottom(offset);
         mCurrentOffsetTop = mTarget.getTop();
         mRefreshDrawable.offsetTopAndBottom(offset);
@@ -491,8 +485,8 @@ public class PullRefreshLayout extends ViewGroup {
             if (mTarget instanceof AbsListView) {
                 final AbsListView absListView = (AbsListView) mTarget;
                 return absListView.getChildCount() > 0
-                        && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
-                        .getTop() < absListView.getPaddingTop());
+                    && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
+                    .getTop() < absListView.getPaddingTop());
             } else {
                 return mTarget.getScrollY() > 0;
             }
