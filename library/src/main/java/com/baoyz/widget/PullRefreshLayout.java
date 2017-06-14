@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -513,7 +512,6 @@ public class PullRefreshLayout extends ViewGroup {
 
         mTarget.layout(left, top + mTarget.getTop(), left + width - right, top + height - bottom + mTarget.getTop());
         mRefreshView.layout(left, top, left + width - right, top + height - bottom);
-        Log.e(TAG, "onLayout:");
     }
 
     private int dp2px(int dp) {
