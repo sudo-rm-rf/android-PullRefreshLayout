@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,7 +24,6 @@ import java.security.InvalidParameterException;
  * Created by baoyz on 14/10/30.
  */
 public class PullRefreshLayout extends ViewGroup {
-    private static String TAG = PullRefreshLayout.class.getSimpleName();
 
     private static final float DECELERATE_INTERPOLATION_FACTOR = 2f;
     private static final int DRAG_MAX_DISTANCE = 64;
@@ -513,7 +511,6 @@ public class PullRefreshLayout extends ViewGroup {
 
         mTarget.layout(left, top + mTarget.getTop(), left + width - right, top + height - bottom + mTarget.getTop());
         mRefreshView.layout(left, top, left + width - right, top + height - bottom);
-        Log.e(TAG, "onLayout:");
     }
 
     private int dp2px(int dp) {

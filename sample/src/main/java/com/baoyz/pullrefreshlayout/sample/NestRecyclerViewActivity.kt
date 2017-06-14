@@ -29,6 +29,10 @@ class NestRecyclerViewActivity : Activity() {
     recyclerView.adapter = ArrayAdapter(this, array)
 
     layout = findViewById(R.id.swipeRefreshLayout) as PullRefreshLayout
+    // NestedScrollViewを挟まない場合はこちらが使えます
+//    recyclerView.viewTreeObserver.addOnScrollChangedListener {
+//      layout.isEnabled = recyclerView.getChildAt(0).top == 0
+//    }
 
     layout.setOnRefreshListener {
       layout.postDelayed(

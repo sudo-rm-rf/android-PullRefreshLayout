@@ -7,8 +7,8 @@ android {
 
     defaultConfig {
         applicationId "com.baoyz.pullrefreshlayout.sample"
-        minSdkVersion 9
-        targetSdkVersion 21
+        minSdkVersion 17
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
     }
@@ -23,10 +23,10 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:21.0.0'
     compile project(':library')
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
-    mavenCentral()
+  mavenCentral()
 }
